@@ -1,0 +1,18 @@
+<h1>Listing All Rented Properties and Tenants</h1>
+
+<table class="table table-striped">
+  <tr>
+    <th>Tenant</th>
+    <th>Property</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @matches.each do |match| %>
+  <tr>
+    <td><%= match.user.name %></td>
+    <td><%= match.name %></td>
+  </tr>
+<% end %>
+</table>

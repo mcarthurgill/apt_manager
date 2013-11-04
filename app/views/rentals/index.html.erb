@@ -1,10 +1,10 @@
 <h1>Listing rentals</h1>
 
-<table>
+<table class="table table-striped">
   <tr>
-    <th>User</th>
     <th>Name</th>
     <th>Rent</th>
+    <th>Tenant</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,16 +12,15 @@
 
 <% @rentals.each do |rental| %>
   <tr>
-    <td><%= rental.user_id %></td>
     <td><%= rental.name %></td>
     <td><%= rental.rent %></td>
-    <td><%= link_to 'Show', rental %></td>
-    <td><%= link_to 'Edit', edit_rental_path(rental) %></td>
-    <td><%= link_to 'Destroy', rental, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= rental.user.name if rental.user %></td>
+    <td><%= link_to 'Show Property', rental %></td>
+    <td><%= link_to 'Edit Property', edit_rental_path(rental) %></td>
+    <td><%= link_to 'Destroy Property', rental, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Rental', new_rental_path %>

@@ -1,4 +1,7 @@
 class RentalsController < ApplicationController
+
+  skip_before_filter :authorize, :only => :index
+
   # GET /rentals
   # GET /rentals.json
   def index
@@ -79,5 +82,29 @@ class RentalsController < ApplicationController
       format.html { redirect_to rentals_url }
       format.json { head :no_content }
     end
+  end
+
+
+  def match
+    @rentals = Rental.all
+    @users = User.tenants
+  end
+
+  def create_match
+    rental = Rental.find(params[:rental_id])
+    user = User.find(params[:user_id])
+    respond_to do |format|
+      if rental && user 
+        rental.user = user
+        rental.save!
+        format.html { redirect_to matches_path, notice: 'Match was successfully created.' }
+      else
+        format.html { redirect_to match_path, notice: 'Something went wrong. Try again.' }
+      end
+    end
+  end
+
+  def matches
+    @matches = Rental.matches
   end
 end

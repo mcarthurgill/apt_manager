@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  
+  before_filter :authorize
 
   private
 
@@ -9,6 +11,6 @@ class ApplicationController < ActionController::Base
   	helper_method :current_user
 
   	def authorize
-  		redirect_to login_url, alert: "Not Authorized" if current_user.nil?
+  		redirect_to login_url, alert: "Not Authorized" unless current_user && current_user.admin
   	end
 end

@@ -8,5 +8,9 @@ AptManager::Application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
   resources :sessions
+
+  get "match", to: "rentals#match", as: 'match'
+  post "create_match", to: "rentals#create_match", as: "create_match"
+  get "matches", to: "rentals#matches", as: "matches"
   
 end

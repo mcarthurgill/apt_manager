@@ -24,12 +24,19 @@
 	        </ul>
 	        <ul class="nav pull-right">
 	          <% if current_user %>
-	          	<li><%= link_to "Logout", logout_path %></li>
-	          	<li class="brand"><%= current_user.name %></li>
-	          <% else %>
-	          	<li><%= link_to "Sign Up", signup_path %></li>
-	          	<li><%= link_to "Login", login_path %></li>
-	          <% end %>
+	          	<% if current_user.admin %>
+	          		<li><%= link_to "New Tenant", signup_path %></li>	
+	          		<li><%= link_to "New Property", new_rental_path %></li>
+	          		<li><%= link_to "Match", match_path %></li>
+	          		<li><%= link_to "See All Matches", matches_path %></li>
+	          		<li><%= link_to "Logout", logout_path %></li>
+	          	<% else %>
+	          		<li><%= link_to "Logout", logout_path %></li>
+	          		<li class="brand"><%= current_user.name %></li>
+	         		<% end %>
+	         	<% else %>
+	         		<li><%= link_to "Login", login_path %></li>
+	         	<% end %>
 	        </ul>
 	      </div>
 	    </div>
