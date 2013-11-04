@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
-  before_filter :authorize
+  before_filter :authorize_as_admin
 
   private
 
@@ -11,6 +11,17 @@ class ApplicationController < ActionController::Base
   	helper_method :current_user
 
   	def authorize
-  		redirect_to login_url, alert: "Not Authorized" unless current_user && current_user.admin
+  		redirect_to login_path, alert: "You must login first" unless current_user
   	end
+
+    def authorize_as_admin
+      if current_user
+        if current_user.admin
+          return
+        end
+        redirect_to rentals_path, alert: "Not Authorized"
+      else
+        redirect_to login_path, alert: "You must log in"
+      end
+    end
 end

@@ -1,6 +1,6 @@
 class RentalsController < ApplicationController
 
-  skip_before_filter :authorize, :only => :index
+  skip_before_filter :authorize_as_admin, :only => :index
 
   # GET /rentals
   # GET /rentals.json

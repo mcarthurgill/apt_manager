@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_filter :authorize
+  skip_before_filter :authorize_as_admin
 
   def new
   end
@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
   	user = User.find_by_email(params[:email])
   	if user && user.authenticate(params[:password])
   		session[:user_id] = user.id
-  		redirect_to users_path, notice: "Logged In As #{user.name}"
+  		redirect_to rentals_path, notice: "Logged In"
   	else
   		redirect_to new_session_path, notice: "Login information is invalid"
   	end

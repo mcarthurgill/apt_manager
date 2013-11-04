@@ -15,9 +15,7 @@
     <td><%= rental.name %></td>
     <td><%= rental.rent %></td>
     <td><%= rental.user.name if rental.user %></td>
-    <td><%= link_to 'Show Property', rental %></td>
-    <td><%= link_to 'Edit Property', edit_rental_path(rental) %></td>
-    <td><%= link_to 'Destroy Property', rental, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <%= render 'shared/rental_links', :rental => rental if current_user && current_user.admin %>
   </tr>
 <% end %>
 </table>
