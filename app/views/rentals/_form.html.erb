@@ -10,18 +10,15 @@
       </ul>
     </div>
   <% end %>
-
+  
   <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
+    <%= f.text_field :name, :placeholder => "Name" %>
   </div>
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.number_field :user_id, :placeholder => "User ID" %>
   </div>
   <div class="field">
-    <%= f.label :rent %><br />
-    <%= f.number_field :rent %>
+    <%= f.number_field :rent, :placeholder => "Rent" %>
   </div>
   <div class="actions">
     <%= f.submit %>

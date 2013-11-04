@@ -4,4 +4,6 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation, :phone
 
   validates_uniqueness_of	:email
+
+  has_one :rental
 end
