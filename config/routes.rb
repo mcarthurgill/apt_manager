@@ -1,5 +1,8 @@
 AptManager::Application.routes.draw do
 
+  resources :rentals
+
+
   root to: "users#index"
   resources :users
   get 'signup', to: 'users#new', as: 'signup'
