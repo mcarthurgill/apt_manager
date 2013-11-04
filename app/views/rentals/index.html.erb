@@ -15,6 +15,7 @@
     <td><%= rental.name %></td>
     <td><%= rental.rent %></td>
     <td><%= rental.user.name if rental.user %></td>
+    <td><%= link_to 'Show Property', rental %></td>
     <%= render 'shared/rental_links', :rental => rental if current_user && current_user.admin %>
   </tr>
 <% end %>
