@@ -8,22 +8,39 @@
 </head>
 <body>
 
+<div class="container">
 	<% if notice %>
 		<%= notice %>
 	<% elsif alert %>
 		<%= alert %>
 	<% end %>
-
-	<% if current_user %>
-		Logged in as <%= current_user.name %>
-		<%= link_to "Logout", logout_path %>
-	<% else %>
-		<%= link_to "Sign Up", login_path %> or
-		<%= link_to "Login", signup_path %>
-	<% end %>
-
-
-<%= yield %>
-
+	<div class="navbar navbar-fixed-top">
+	  <div class="navbar-inner">
+	    <div class="container">
+	      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </a>
+	      <a class="brand" href="#">Third Street Capital</a>
+	      <div class="nav-collapse">
+	        <ul class="nav">
+	          <li><%= link_to "Browse Products", root_path %></li>
+	        </ul>
+	        <ul class="nav pull-right">
+	          <% if current_user %>
+	          	<li><%= link_to "Logout", logout_path %></li>
+	          	<li class="brand"><%= current_user.name %></li>
+	          <% else %>
+	          	<li><%= link_to "Sign Up", signup_path %></li>
+	          	<li><%= link_to "Login", login_path %></li>
+	          <% end %>
+	        </ul>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<%= yield %>
+</div>
 </body>
 </html>
