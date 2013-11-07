@@ -1,6 +1,6 @@
 <h1>Listing pdfs</h1>
 
-<table>
+<table class="table table-striped">
   <tr>
     <th>Title</th>
     <th>User</th>
@@ -14,16 +14,15 @@
 <% @pdfs.each do |pdf| %>
   <tr>
     <td><%= pdf.title %></td>
-    <td><%= pdf.user_id %></td>
-    <td><%= pdf.rental_id %></td>
-    <td><%= pdf.file %></td>
-    <td><%= link_to 'Show', pdf %></td>
-    <td><%= link_to 'Edit', edit_pdf_path(pdf) %></td>
-    <td><%= link_to 'Destroy', pdf, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= pdf.user.name if pdf.user %></td>
+    <td><%= pdf.rental.name if pdf.rental %></td>
+    <td><%= link_to "Click for PDF", "#{pdf.file}", :target => "_blank", :class => "btn btn-primary btn-small" %></td>
+    <td><%= link_to 'Edit', edit_pdf_path(pdf), :class => "btn btn-success btn-small" %></td>
+    <td><%= link_to 'Destroy', pdf, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-small" %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Pdf', new_pdf_path %>
+<%= link_to 'New Pdf', new_pdf_path, :class => "btn btn-info" %>

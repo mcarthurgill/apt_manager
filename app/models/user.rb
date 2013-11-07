@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of	:email
 
   has_one :rental
+  has_many :pdfs
 
   scope :tenants, -> { where(admin: nil) }
 end

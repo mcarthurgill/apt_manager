@@ -1,24 +1,41 @@
-<p>
-  <b>Name:</b>
-  <%= @user.name %>
-</p>
+<h1><%= @user.name %></h1>
 
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
+<table class="table table-striped">
+  <tr>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Property</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr>
+    <td><%= @user.email %></td>
+    <td><%= @user.phone %></td>
+    <td><%= @user.rental.name if @user.rental %></td>
+    <%= render 'shared/user_links', :user => @user %>
+  </tr>
 
-<p>
-  <b>Phone:</b>
-  <%= @user.phone %>
-</p>
+</table>
+<br><br>
+<table class="table table-striped">
+  <tr>
+    <th>PDF Documents</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @pdfs.each do |pdf| %>
+    <tr>
+      <td><%= pdf.title %></td>
+      <td><%= link_to "Click for PDF", "#{pdf.file}", :target => "_blank", :class => "btn btn-primary btn-small" %></td>
+      <td><%= link_to 'Edit', edit_pdf_path(pdf), :class => "btn btn-success btn-small" %></td>
+      <td><%= link_to 'Destroy', pdf, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-small"  %></td>
+    </tr>
+  <% end %>
+</table>
 
-<p>
-  <b>Unit Name:</b>
-  <%= @user.rental.name if @user.rental %>
-</p>
 
 
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Back', users_path, :class => "btn btn-info" %>

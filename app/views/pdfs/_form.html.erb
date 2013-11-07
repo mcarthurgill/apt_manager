@@ -12,22 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <%= f.text_field :title, :placeholder => "Title of PDF" %>
   </div>
   <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
+    <%= f.select :user_id, @users, {:include_blank => 'Select A Tenant'}%>
   </div>
   <div class="field">
-    <%= f.label :rental_id %><br />
-    <%= f.number_field :rental_id %>
+    <%= f.select :rental_id, @rentals, {:include_blank => 'Select A Property'} %>
   </div>
   <div class="field">
-    <%= f.label :file %><br />
     <%= f.file_field :file %>
   </div>
   <div class="actions">
-    <%= f.submit, "Upload PDF", :class => "btn btn-primary" %>
+    <%= f.submit "Upload PDF", :class => "btn btn-primary" %>
   </div>
 <% end %>

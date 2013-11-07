@@ -18,6 +18,7 @@ class RentalsController < ApplicationController
   def show
     @rental = Rental.find(params[:id])
     @images = @rental.images
+    @pdfs = @rental.pdfs
 
     respond_to do |format|
       format.html # show.html.erb
@@ -66,7 +67,7 @@ class RentalsController < ApplicationController
 
     respond_to do |format|
       if @rental.update_attributes(params[:rental])
-        format.html { redirect_to edit_rental_path(@rental), notice: 'Rental was successfully updated.' }
+        format.html { redirect_to rental_path(@rental), notice: 'Rental was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

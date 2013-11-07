@@ -25,6 +25,8 @@ class PdfsController < ApplicationController
   # GET /pdfs/new.json
   def new
     @pdf = Pdf.new
+    @rentals = Rental.all.inject([]) { |arr, rental| arr << [rental.name, rental.id]}
+    @users = User.all.inject([]) { |arr, user| arr << [user.name, user.id]}
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +37,8 @@ class PdfsController < ApplicationController
   # GET /pdfs/1/edit
   def edit
     @pdf = Pdf.find(params[:id])
+    @rentals = Rental.all.inject([]) { |arr, rental| arr << [rental.name, rental.id]}
+    @users = User.all.inject([]) { |arr, user| arr << [user.name, user.id]}
   end
 
   # POST /pdfs
@@ -44,7 +48,11 @@ class PdfsController < ApplicationController
 
     respond_to do |format|
       if @pdf.save
-        format.html { redirect_to @pdf, notice: 'Pdf was successfully created.' }
+        if @pdf.user
+          format.html { redirect_to user_path(@pdf.user), notice: 'Pdf was successfully created.' }
+        elsif @pdf.rental
+          format.html { redirect_to rental_path(@pdf.rental), notice: 'Pdf was successfully created.' }
+        end
         format.json { render json: @pdf, status: :created, location: @pdf }
       else
         format.html { render action: "new" }
