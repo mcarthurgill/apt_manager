@@ -80,4 +80,14 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def delete_match
+    user = User.find_by_name(params[:user])
+    rental = Rental.find_by_name(params[:rental])
+    user.rental = nil if user.rental == rental
+    rental.user = nil if rental.user == user
+    user.save! 
+    rental.save!
+    redirect_to matches_path, :notice => "Match was deleted"
+  end
 end

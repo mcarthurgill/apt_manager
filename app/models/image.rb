@@ -3,5 +3,5 @@ class Image < ActiveRecord::Base
 
 	belongs_to :rental
 
-	mount_uploader :file, ImageUploader
+	mount_uploader :file, PictureUploader
 end

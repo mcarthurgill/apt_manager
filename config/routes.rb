@@ -12,5 +12,6 @@ AptManager::Application.routes.draw do
   get "match", to: "rentals#match", as: 'match'
   post "create_match", to: "rentals#create_match", as: "create_match"
   get "matches", to: "rentals#matches", as: "matches"
+  delete "matches/:user/:rental", to: "users#delete_match", as: "destroy_match"
   
 end

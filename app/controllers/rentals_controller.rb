@@ -17,6 +17,7 @@ class RentalsController < ApplicationController
   # GET /rentals/1.json
   def show
     @rental = Rental.find(params[:id])
+    @images = @rental.images
 
     respond_to do |format|
       format.html # show.html.erb
@@ -39,7 +40,7 @@ class RentalsController < ApplicationController
   def edit
     @rental = Rental.find(params[:id])
     @rental.images.build
-    render :new
+    render :edit
   end
 
   # POST /rentals
@@ -62,22 +63,10 @@ class RentalsController < ApplicationController
   # PUT /rentals/1.json
   def update
     @rental = Rental.find(params[:id])
-    p "*"*50
-    p params[:rental][:images_attributes]["0"][:file]
-    p "*"*50
-    p params[:rental][:images_attributes]["1"][:file]
-    p "*"*50
-    p params[:rental][:images_attributes][:file]
-    p "*"*50
-    p params[:rental][:images_attributes]
-    p "*"*50
 
     respond_to do |format|
       if @rental.update_attributes(params[:rental])
-
-        Cloudinary::Uploader.upload(params[:rental][:images_attributes][:file].original_filename)
-
-        format.html { redirect_to @rental, notice: 'Rental was successfully updated.' }
+        format.html { redirect_to edit_rental_path(@rental), notice: 'Rental was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -110,6 +99,8 @@ class RentalsController < ApplicationController
     respond_to do |format|
       if rental && user 
         rental.user = user
+        user.rental = rental 
+        user.save!
         rental.save!
         format.html { redirect_to matches_path, notice: 'Match was successfully created.' }
       else

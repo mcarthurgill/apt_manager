@@ -1,17 +1,34 @@
-<p>
-  <b>User:</b>
-  <%= @rental.user_id %>
-</p>
+<div class="row">
+  <div class="span10">
+			<p>
+			  <b>User:</b>
+			  <%= @rental.user_id %>
+			</p>
 
-<p>
-  <b>Name:</b>
-  <%= @rental.name %>
-</p>
+			<p>
+			  <b>Name:</b>
+			  <%= @rental.name %>
+			</p>
 
-<p>
-  <b>Rent:</b>
-  <%= @rental.rent %>
-</p>
+			<p>
+			  <b>Rent:</b>
+			  <%= @rental.rent %>
+			</p>
 
-<%= link_to 'Edit', edit_rental_path(@rental) %> |
-<%= link_to 'Back', rentals_path %>
+			<ul class="thumbnails">
+			  <% @images.each do |image| %>
+			  	<li>
+					  <div class="thumbnail">
+					  	<%= image_tag(image.file.url(:thumb)) %>
+				  		<div class="caption">
+				  			<%= @rental.name %>
+							</div>
+						</div>
+					</li>
+			  <% end %>
+			</ul>
+
+			<%= link_to 'Edit', edit_rental_path(@rental) %> |
+			<%= link_to 'Back', rentals_path %>
+	</div>
+</div>

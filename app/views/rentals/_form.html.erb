@@ -1,45 +1,35 @@
-<%= form_for(@rental) do |f| %>
-  <% if @rental.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@rental.errors.count, "error") %> prohibited this rental from being saved:</h2>
-
-      <ul>
-      <% @rental.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  
-  <div class="field">
-    <%= f.text_field :name, :placeholder => "Name" %>
-  </div>
-  <div class="field">
-    <%= f.number_field :rent, :placeholder => "Rent" %>
-  </div>
-
-  <ul class="thumbnails">
-    <%= f.fields_for :images, @rental.images do |images_field| %>
+<div class="row">
+  <div class="span10">
+    <%= form_for @rental do |f| %>
+    <%= f.label :name, "Name:" %>
+    <%= f.text_field :name, :class => "span4" %>
+    <%= f.label :rent, "Rent:" %>
+    <%= f.text_field :rent, :class => "span4" %>
+    <hr/>
+    <ul class="thumbnails">
+      <%= f.fields_for :images, @rental.images do |images_field| %>
       <% if images_field.object.new_record? %>
-        <li id="<%= images_field.object_name.gsub(/[^0-9]+/,'') %>" class="span4">
-          <%= images_field.label :file, "Image:" %>
-          <%= images_field.file_field :file %>
-        </li>
-        <% else %>
-        <li id="<%= images_field.object_name.gsub(/[^0-9]+/,'') %>" class="span2">
-          <div class="thumbnail">
-            <%= image_tag(images_field.object.file.url(:thumb)) %>
-            <div class="caption">
-              <%= images_field.check_box :_destroy %>
-              <%= images_field.label(:_destroy, "Delete image", :class => "checkbox inline") %>
-            </div>
+      <li id="<%= images_field.object_name.gsub(/[^0-9]+/,'') %>" class="span4">
+        <%= images_field.label :file, "Image:" %>
+        <%= images_field.file_field :file %>
+      </li>
+      <% else %>
+      <li id="<%= images_field.object_name.gsub(/[^0-9]+/,'') %>" class="span2">
+        <div class="thumbnail">
+          <%= image_tag(images_field.object.file.url(:thumb)) %>
+          <div class="caption">
+            <%= images_field.check_box :_destroy %>
+            <%= images_field.label(:_destroy, "Delete image", :class => "checkbox inline") %>
           </div>
-        </li>
+        </div>
+      </li>
       <% end %>
+      <% end %>
+    </ul>
+    <span class="help-block">Add one image at a time. When the page reloads, you will see all of the images associated with this property.</span>
+    <div class="form-actions">
+      <%= f.submit "Save", :class => "btn btn-primary" %>
+    </div>
     <% end %>
-  </ul>
-
-  <div class="actions">
-    <%= f.submit "Create Property" %>
   </div>
-<% end %>
+</div>
