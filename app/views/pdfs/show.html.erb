@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @pdf.title %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @pdf.user_id %>
+</p>
+
+<p>
+  <b>Rental:</b>
+  <%= @pdf.rental_id %>
+</p>
+
+<p>
+  <b>File:</b>
+  <%= @pdf.file %>
+</p>
+
+
+<%= link_to 'Edit', edit_pdf_path(@pdf) %> |
+<%= link_to 'Back', pdfs_path %>

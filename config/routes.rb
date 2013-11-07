@@ -1,5 +1,8 @@
 AptManager::Application.routes.draw do
 
+  resources :pdfs
+
+
   resources :rentals
 
   root to: "rentals#index"
