@@ -15,9 +15,8 @@
 
       var $newLi = $lis.last().clone();
       $newLi.find('label').attr('for', updateNumber);
-      $newLi.find('input')
-        .attr('id', updateNumber);
-        .attr('name', updateNumber);
+      $newLi.find('input').attr('id', updateNumber);
+      $newLi.find('input').attr('name', updateNumber);
 
       $list.append($newLi);
     });  
