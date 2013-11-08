@@ -1,0 +1,21 @@
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">Third Street Capital</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li><%= link_to "Properties", rentals_path %></li>
+      		<li><%= link_to "All Tenants", users_path %></li>
+      		<li><%= link_to "PDF", pdfs_path %></li>
+        </ul>
+        <ul class="nav pull-right">
+      		<li><%= link_to "New Tenant", signup_path %></li>	
+      		<li><%= link_to "New Property", new_rental_path %></li>
+      		<li><%= link_to "Match", match_path %></li>
+      		<li><%= link_to "See All Matches", matches_path %></li>
+      		<li><%= link_to "Logout", logout_path %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

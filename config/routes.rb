@@ -1,11 +1,11 @@
 AptManager::Application.routes.draw do
 
+  root to: "home#index"
+
+  get "home/index"
   resources :pdfs
-
-
   resources :rentals
 
-  root to: "rentals#index"
   resources :users
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
