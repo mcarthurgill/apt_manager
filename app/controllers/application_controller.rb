@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
         if current_user.admin
           return
         end
-        redirect_to rentals_path, alert: "Not Authorized"
+        redirect_to user_path(current_user)
       else
         redirect_to login_path, alert: "You must log in"
       end

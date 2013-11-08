@@ -1,10 +1,12 @@
 class RentalsController < ApplicationController
 
-  skip_before_filter :authorize_as_admin, :only => :show
+  skip_before_filter :authorize_as_admin, :only => [:show, :index]
+  before_filter :authorize, :only => :index
 
   # GET /rentals
   # GET /rentals.json
   def index
+
     @rentals = Rental.all
 
     respond_to do |format|
