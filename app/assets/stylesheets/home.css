@@ -6,7 +6,8 @@ body{
 	 background-size: cover;
 }
 
-.btn {
-	width:100%;
-	background-color:transparent;
+.btn{
+	width:70%;
+	opacity: 0.72;
+	line-height: 4em !important;
 }
