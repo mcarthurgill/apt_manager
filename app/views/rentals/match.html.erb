@@ -16,7 +16,7 @@
     <tr>
       <td><%= check_box_tag(:rental_id, rental.id) %></td>
       <td><%= rental.name %></td>
-      <td><%= rental.rent %></td>
+      <td><%= number_to_currency(rental.rent) %></td>
       <td><%= rental.user.name if rental.user %></td>
     </tr>
   <% end %>

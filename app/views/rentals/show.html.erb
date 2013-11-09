@@ -10,7 +10,7 @@
     <th></th>
   </tr>
   <tr>
-    <td><%= @rental.rent %></td>
+    <td><%= number_to_currency(@rental.rent) %></td>
     <td><%= @rental.user.name if @rental.user %></td>
   </tr>
 </table>
