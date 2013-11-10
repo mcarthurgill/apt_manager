@@ -15,7 +15,7 @@
     <td><%= maintenance_request.user.name if maintenance_request.user %></td>
     <td><%= maintenance_request.user.rental.name if maintenance_request.user && maintenance_request.user.rental %></td>
     <td><%= maintenance_request.request %></td>
-    <td><%= link_to 'Destroy', maintenance_request, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-small" %></td>
+    <td><%= link_to 'Complete', maintenance_request, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-small" %></td>
   </tr>
 <% end %>
 </table>

@@ -1,5 +1,8 @@
 <h1>Listing pdfs</h1>
 
+<h2><%= link_to 'New Pdf', new_pdf_path, :class => "btn btn-primary" %></h2>
+
+
 <table class="table table-striped">
   <tr>
     <th>Title</th>
@@ -22,7 +25,3 @@
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Pdf', new_pdf_path, :class => "btn btn-info" %>
