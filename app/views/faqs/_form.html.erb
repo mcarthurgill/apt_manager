@@ -12,14 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :question %><br />
-    <%= f.text_field :question %>
+    <%= f.text_field :question, :placeholder => "Question" %>
   </div>
   <div class="field">
-    <%= f.label :answer %><br />
-    <%= f.text_field :answer %>
+    <%= f.text_field :answer, :placeholder => "Answer" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Create FAQ", :class => "btn btn-primary" %>
   </div>
 <% end %>

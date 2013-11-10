@@ -28,6 +28,7 @@ class FaqsController < ApplicationController
   # GET /faqs/new.json
   def new
     @faq = Faq.new
+    @faq = Faq.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -47,11 +48,9 @@ class FaqsController < ApplicationController
 
     respond_to do |format|
       if @faq.save
-        format.html { redirect_to @faq, notice: 'Faq was successfully created.' }
-        format.json { render json: @faq, status: :created, location: @faq }
+        format.html { redirect_to new_faq_path, notice: 'Faq was successfully created.' }
       else
-        format.html { render action: "new" }
-        format.json { render json: @faq.errors, status: :unprocessable_entity }
+        format.html { render action: "new", notice: "Something went wrong. Try again"}
       end
     end
   end
@@ -63,11 +62,9 @@ class FaqsController < ApplicationController
 
     respond_to do |format|
       if @faq.update_attributes(params[:faq])
-        format.html { redirect_to @faq, notice: 'Faq was successfully updated.' }
-        format.json { head :no_content }
+        format.html { redirect_to new_faq_path, notice: 'Faq was successfully updated.' }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @faq.errors, status: :unprocessable_entity }
+        format.html { render action: "edit", notice: "Something went wrong. Try again."}
       end
     end
   end

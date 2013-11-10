@@ -1,0 +1,12 @@
+<div class="accordion-group">
+  <div class="accordion-heading">
+    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#<%= faq.id %>">
+      <h5><i class="icon-plus"></i>   <%= faq.question %></h5>
+    </a>
+  </div>
+  <div id="<%= faq.id %>" class="accordion-body collapse" style="height: 0px;">
+    <div class="accordion-inner">
+      <h6><em><%= faq.answer %></em></h6>
+    </div>
+  </div>
+</div>
