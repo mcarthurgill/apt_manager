@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
   has_one :rental
   has_many :pdfs
+  has_many :maintenance_requests
 
   scope :tenants, -> { where(admin: nil) }
 end

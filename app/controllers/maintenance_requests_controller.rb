@@ -1,5 +1,6 @@
 class MaintenanceRequestsController < ApplicationController
-  skip_before_filter :authorize_as_admin, :only => :new
+  skip_before_filter :authorize_as_admin, :only => [:new, :create]
+  before_filter :authorize, :only => :new
 
   # GET /maintenance_requests
   # GET /maintenance_requests.json
@@ -27,6 +28,7 @@ class MaintenanceRequestsController < ApplicationController
   # GET /maintenance_requests/new.json
   def new
     @maintenance_request = MaintenanceRequest.new
+    @user = User.find(session[:user_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -43,14 +45,15 @@ class MaintenanceRequestsController < ApplicationController
   # POST /maintenance_requests.json
   def create
     @maintenance_request = MaintenanceRequest.new(params[:maintenance_request])
+    @maintenance_request.user_id = session[:user_id]
+    @maintenance_request.rental_id = session[:rental_id]
 
     respond_to do |format|
       if @maintenance_request.save
-        format.html { redirect_to @maintenance_request, notice: 'Maintenance request was successfully created.' }
-        format.json { render json: @maintenance_request, status: :created, location: @maintenance_request }
+        RequestMailer.maintenance(@maintenance_request).deliver
+        format.html { redirect_to user_path(session[:user_id]), notice: 'Maintenance request was successfully sent.' }
       else
         format.html { render action: "new" }
-        format.json { render json: @maintenance_request.errors, status: :unprocessable_entity }
       end
     end
   end

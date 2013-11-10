@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Maintenance request for <%= @maintenance_request.user.name %></h1>
+    <h3>Property: <%= @maintenance_request.rental.name if @maintenance_request.rental %></h3>
+    <p>
+      <%= @maintenance_request.request %>
+    </p>
+    <p>
+      <%= link_to "Mark Request As Complete", maintenance_request_path(@maintenance_request) %>
+    </p>
+  </body>
+</html>
