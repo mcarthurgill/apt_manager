@@ -1,4 +1,6 @@
 class MaintenanceRequestsController < ApplicationController
+  skip_before_filter :authorize_as_admin, :only => :new
+
   # GET /maintenance_requests
   # GET /maintenance_requests.json
   def index
