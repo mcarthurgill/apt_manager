@@ -1,5 +1,8 @@
 AptManager::Application.routes.draw do
 
+  resources :maintenance_requests
+
+
   root to: "home#index"
 
   get "home/index"

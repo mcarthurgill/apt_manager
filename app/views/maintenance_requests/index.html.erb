@@ -1,0 +1,27 @@
+<h1>Listing maintenance_requests</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Rental</th>
+    <th>Request</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @maintenance_requests.each do |maintenance_request| %>
+  <tr>
+    <td><%= maintenance_request.user_id %></td>
+    <td><%= maintenance_request.rental_id %></td>
+    <td><%= maintenance_request.request %></td>
+    <td><%= link_to 'Show', maintenance_request %></td>
+    <td><%= link_to 'Edit', edit_maintenance_request_path(maintenance_request) %></td>
+    <td><%= link_to 'Destroy', maintenance_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Maintenance request', new_maintenance_request_path %>

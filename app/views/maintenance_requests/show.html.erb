@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @maintenance_request.user_id %>
+</p>
+
+<p>
+  <b>Rental:</b>
+  <%= @maintenance_request.rental_id %>
+</p>
+
+<p>
+  <b>Request:</b>
+  <%= @maintenance_request.request %>
+</p>
+
+
+<%= link_to 'Edit', edit_maintenance_request_path(@maintenance_request) %> |
+<%= link_to 'Back', maintenance_requests_path %>
