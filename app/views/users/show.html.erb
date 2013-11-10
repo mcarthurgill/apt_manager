@@ -14,7 +14,9 @@
     <td><%= @user.email %></td>
     <td><%= @user.phone %></td>
     <td><%= @user.rental.name if @user.rental %></td>
-    <%= render 'shared/user_links', :user => @user %>
+    <% if @user && @user.admin %>
+      <%= render 'shared/user_links', :user => @user %>
+    <% end %>
   </tr>
 
 </table>
