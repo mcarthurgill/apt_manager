@@ -5,7 +5,8 @@ class MaintenanceRequestsController < ApplicationController
   # GET /maintenance_requests
   # GET /maintenance_requests.json
   def index
-    @maintenance_requests = MaintenanceRequest.all
+    @pending = MaintenanceRequest.pending
+    @completed = MaintenanceRequest.completed
 
     respond_to do |format|
       format.html # index.html.erb
@@ -78,7 +79,8 @@ class MaintenanceRequestsController < ApplicationController
   # DELETE /maintenance_requests/1.json
   def destroy
     @maintenance_request = MaintenanceRequest.find(params[:id])
-    @maintenance_request.destroy
+    @maintenance_request.complete = true
+    @maintenance_request.save!
 
     respond_to do |format|
       format.html { redirect_to maintenance_requests_url }

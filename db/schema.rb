@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131110182014) do
+ActiveRecord::Schema.define(:version => 20131112160511) do
 
   create_table "faqs", :force => true do |t|
     t.string   "question"
@@ -31,8 +31,9 @@ ActiveRecord::Schema.define(:version => 20131110182014) do
     t.integer  "user_id"
     t.integer  "rental_id"
     t.text     "request"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "complete",   :default => false
   end
 
   create_table "pdfs", :force => true do |t|
