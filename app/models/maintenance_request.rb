@@ -4,6 +4,6 @@ class MaintenanceRequest < ActiveRecord::Base
   belongs_to :user
   belongs_to :rental
 
-  scope :pending, -> { where(:complete => false).order("user_id ASC") }
-  scope :completed, -> { where(:complete => true).order("user_id ASC") }
+  scope :pending, -> { where(:complete => false).order("created_at ASC") }
+  scope :completed, -> { where(:complete => true).order("updated_at DESC") }
 end

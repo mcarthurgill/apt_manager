@@ -1,5 +1,5 @@
 class MaintenanceRequestsController < ApplicationController
-  skip_before_filter :authorize_as_admin, :only => [:new, :create]
+  skip_before_filter :authorize_as_admin, :only => [:new, :create, :index]
   before_filter :authorize, :only => :new
 
   # GET /maintenance_requests
@@ -79,8 +79,13 @@ class MaintenanceRequestsController < ApplicationController
   # DELETE /maintenance_requests/1.json
   def destroy
     @maintenance_request = MaintenanceRequest.find(params[:id])
+    p "*"*50
+    p @maintenance_request.complete
     @maintenance_request.complete = true
+    p @maintenance_request.complete
     @maintenance_request.save!
+    p @maintenance_request.complete
+    p "*"*50
 
     respond_to do |format|
       format.html { redirect_to maintenance_requests_url }
