@@ -2,22 +2,24 @@
          
 <h2><%= link_to "New Match", match_path, :class => "btn btn-primary" %></h2>
 
-<table class="table table-striped">
-  <tr>
-    <th>Tenant</th>
-    <th>Property</th>
+<table class="table table-striped tablesorter-blue">
+  <thead>
+    <th class="sortable headerSortDown">Tenant</th>
+    <th class="sortable headerSortDown">Property</th>
     <th></th>
     <th></th>
     <th></th>
-  </tr>
+  </thead>
 
-<% @matches.each do |match| %>
-  <tr>
-    <% if match && match.user %>
-      <td><%= match.user.name %></td>
-      <td><%= match.name %></td>
-      <td><%= link_to 'Destroy', destroy_match_path(match.user.name, match.name), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-small"%></td>
+  <tbody>
+    <% @matches.each do |match| %>
+      <tr>
+        <% if match && match.user %>
+          <td><%= match.user.name %></td>
+          <td><%= match.name %></td>
+          <td><%= link_to 'Destroy', destroy_match_path(match.user.name, match.name), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-small"%></td>
+        <% end %>
+      </tr>
     <% end %>
-  </tr>
-<% end %>
+  </tbody>
 </table>

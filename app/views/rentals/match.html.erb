@@ -1,50 +1,54 @@
 <%= form_tag create_match_path do %>
   <h1>Pick a rental:</h1>
 
-  <table class="table table-striped">
-    <tr>
+  <table class="table table-striped tablesorter-blue">
+    <thead>
       <th></th>
-      <th>Name</th>
-      <th>Rent</th>
-      <th>Tenant?</th>
+      <th class="sortable headerSortDown">Name</th>
+      <th class="sortable headerSortDown">Rent</th>
+      <th class="sortable headerSortDown">Tenant?</th>
       <th></th>
       <th></th>
       <th></th>
-    </tr>
+    </thead>
 
-  <% @rentals.each do |rental| %>
-    <tr>
-      <td><%= check_box_tag(:rental_id, rental.id) %></td>
-      <td><%= rental.name %></td>
-      <td><%= number_to_currency(rental.rent) %></td>
-      <td><%= rental.user.name if rental.user %></td>
-    </tr>
-  <% end %>
+    <tbody>
+      <% @rentals.each do |rental| %>
+        <tr>
+          <td><%= check_box_tag(:rental_id, rental.id) %></td>
+          <td><%= rental.name %></td>
+          <td><%= number_to_currency(rental.rent) %></td>
+          <td><%= rental.user.name if rental.user %></td>
+        </tr>
+      <% end %>
+    </tbody>
   </table>
 
   <h1>Pick a tenant:</h1>
 
-  <table class="table table-striped">
-    <tr>
+  <table class="table table-striped tablesorter-blue">
+    <thead>
       <th></th>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Phone</th>
-      <th>Property (if applicable)</th>
+      <th class="sortable headerSortDown">Name</th>
+      <th class="sortable headerSortDown">Email</th>
+      <th class="sortable headerSortDown">Phone</th>
+      <th class="sortable headerSortDown">Property (if applicable)</th>
       <th></th>
       <th></th>
       <th></th>
-    </tr>
+    </thead>
 
-  <% @users.each do |user| %>
-    <tr>
-      <td><%= check_box_tag(:user_id, user.id) %></td>
-      <td><%= user.name %></td>
-      <td><%= user.email %></td>
-      <td><%= user.phone %></td>
-      <td><%= user.rental.name if user.rental %></td>
-    </tr>
-  <% end %>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= check_box_tag(:user_id, user.id) %></td>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.phone %></td>
+          <td><%= user.rental.name if user.rental %></td>
+        </tr>
+      <% end %>
+    </tbody>
   </table>
   <%= submit_tag "Create Match", :class => "btn btn-primary" %>
 <% end %>

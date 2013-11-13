@@ -36,21 +36,24 @@
 <hr>
 
 <% if current_user && current_user.admin %>
-  <table class="table table-striped">
-    <tr>
-      <th>PDF Documents</th>
+  <table class="table table-striped tablesorter-blue">
+    <thead>
+      <th class="sortable headerSortDown">PDF Documents</th>
       <th></th>
       <th></th>
       <th></th>
-    </tr>
-    <% @pdfs.each do |pdf| %>
-      <tr>
-        <td><%= pdf.title %></td>
-        <td><%= link_to "Click for PDF", "#{pdf.file}", :target => "_blank", :class => "btn btn-primary btn-small" %></td>
-        <td><%= link_to 'Edit PDF', edit_pdf_path(pdf), :class => "btn btn-success btn-small" %></td>
-        <td><%= link_to 'Destroy PDF', pdf, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-small" %></td>
-      </tr>
-    <% end %>
+    </thead>
+
+    <tbody>
+      <% @pdfs.each do |pdf| %>
+        <tr>
+          <td><%= pdf.title %></td>
+          <td><%= link_to "Click for PDF", "#{pdf.file}", :target => "_blank", :class => "btn btn-primary btn-small" %></td>
+          <td><%= link_to 'Edit PDF', edit_pdf_path(pdf), :class => "btn btn-success btn-small" %></td>
+          <td><%= link_to 'Destroy PDF', pdf, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-small" %></td>
+        </tr>
+      <% end %>
+    </tbody>
   </table>
   <%= link_to 'Edit Rental', edit_rental_path(@rental), :class => "btn btn-success" %> |
 <% end %>

@@ -3,25 +3,27 @@
 <h2><%= link_to "New Property", new_rental_path, :class => "btn btn-primary" %></h2>
 
 
-<table class="table table-striped">
-  <tr>
-    <th>Name</th>
-    <th>Rent</th>
-    <th>Tenant</th>
+<table class="table table-striped tablesorter-blue">
+  <thead>
+    <th class="sortable headerSortDown">Name</th>
+    <th class="sortable headerSortDown">Rent</th>
+    <th class="sortable headerSortDown">Tenant</th>
     <th></th>
     <th></th>
     <th></th>
-  </tr>
+  </thead>
 
-<% @rentals.each do |rental| %>
-  <tr>
-    <td><%= rental.name %></td>
-    <td><%= number_to_currency(rental.rent) %></td>
-    <td><%= rental.user.name if rental.user %></td>
-    <td><%= link_to 'Show Property', rental, :class => "btn btn-info btn-small" %></td>
-    <%= render 'shared/rental_links', :rental => rental if current_user && current_user.admin %>
-  </tr>
-<% end %>
+  <tbody>
+    <% @rentals.each do |rental| %>
+      <tr>
+        <td><%= rental.name %></td>
+        <td><%= number_to_currency(rental.rent) %></td>
+        <td><%= rental.user.name if rental.user %></td>
+        <td><%= link_to 'Show Property', rental, :class => "btn btn-info btn-small" %></td>
+        <%= render 'shared/rental_links', :rental => rental if current_user && current_user.admin %>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
 

@@ -3,26 +3,28 @@
 <h2><%= link_to "New Tenant", signup_path, :class => "btn btn-primary" %></h2>
 
 
-<table class="table table-striped">
-  <tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Phone</th>
-    <th>Property</th>
+<table class="table table-striped tablesorter-blue">
+  <thead>
+    <th class="sortable headerSortDown">Name</th>
+    <th class="sortable headerSortDown">Email</th>
+    <th class="sortable headerSortDown">Phone</th>
+    <th class="sortable headerSortDown">Property</th>
     <th></th>
     <th></th>
     <th></th>
-  </tr>
+  </thead>
 
-<% @users.each do |user| %>
-  <tr>
-    <td><%= user.name %></td>
-    <td><%= user.email %></td>
-    <td><%= user.phone %></td>
-    <td><%= user.rental.name if user.rental %></td>
-    <%= render 'shared/user_links', :user => user %>
-  </tr>
-<% end %>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.phone %></td>
+        <td><%= user.rental.name if user.rental %></td>
+        <%= render 'shared/user_links', :user => user %>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
 

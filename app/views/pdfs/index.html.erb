@@ -4,7 +4,7 @@
 
 
 <table class="table table-striped tablesorter-blue">
-  <tr>
+  <thead>
     <th class="sortable headerSortDown">Title</th>
     <th class="sortable headerSortDown">User</th>
     <th class="sortable headerSortDown">Rental</th>
@@ -12,16 +12,18 @@
     <th></th>
     <th></th>
     <th></th>
-  </tr>
+  </thead>
 
-<% @pdfs.each do |pdf| %>
-  <tr>
-    <td><%= pdf.title %></td>
-    <td><%= pdf.user.name if pdf.user %></td>
-    <td><%= pdf.rental.name if pdf.rental %></td>
-    <td><%= link_to "Click for PDF", "#{pdf.file}", :target => "_blank", :class => "btn btn-primary btn-small" %></td>
-    <td><%= link_to 'Edit', edit_pdf_path(pdf), :class => "btn btn-success btn-small" %></td>
-    <td><%= link_to 'Destroy', pdf, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-small" %></td>
-  </tr>
-<% end %>
+  <tbody>
+    <% @pdfs.each do |pdf| %>
+      <tr>
+        <td><%= pdf.title %></td>
+        <td><%= pdf.user.name if pdf.user %></td>
+        <td><%= pdf.rental.name if pdf.rental %></td>
+        <td><%= link_to "Click for PDF", "#{pdf.file}", :target => "_blank", :class => "btn btn-primary btn-small" %></td>
+        <td><%= link_to 'Edit', edit_pdf_path(pdf), :class => "btn btn-success btn-small" %></td>
+        <td><%= link_to 'Destroy', pdf, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-small" %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
