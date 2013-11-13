@@ -1,42 +1,37 @@
 <h2>Maintenance Requests</h2>
 
-<table class="table striped">
-  <tr>
-    <th>Tenant</th>
-    <th>Property</th>
-    <th>Request</th>
+<table class="table table-striped tablesorter-blue">
+  <thead>
+    <th class="sortable headerSortDown">Tenant</th>
+    <th class="sortable headerSortDown">Property</th>
+    <th class="sortable headerSortDown">Request</th>
+    <th class="sortable headerSortDown">Submitted</th>
+    <th class="sortable headerSortDown">Completed</th>
     <th></th>
     <th></th>
     <th></th>
-  </tr>
+  </thead>
 
-<% @pending.each do |maintenance_request| %>
-  <tr>
-    <td><%= maintenance_request.user.name if maintenance_request.user %></td>
-    <td><%= maintenance_request.user.rental.name if maintenance_request.user && maintenance_request.user.rental %></td>
-    <td><%= maintenance_request.request %></td>
-    <td><%= link_to 'Complete', maintenance_request, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-small" %></td>
-    <td></td>
-  </tr>
-<% end %>
+  <tbody>
+    <% @pending.each do |maintenance_request| %>
+      <tr>
+        <td><%= maintenance_request.user.name if maintenance_request.user %></td>
+        <td><%= maintenance_request.user.rental.name if maintenance_request.user && maintenance_request.user.rental %></td>
+        <td><%= maintenance_request.request %></td>
+        <td><%= link_to 'Complete', maintenance_request, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-small" %></td>
+        <td></td>
+        <td></td>
+      </tr>
+    <% end %>
 
-  <% if @completed %>
-    <tr>
-      <th><h4>History</h4></th>    
-      <th></th>
-      <th></th>
-      <th><h4>Submitted</h4></th>
-      <th><h4>Completed</h4></th>
-    </tr>
-  <% end %>
-
-<% @completed.each do |maintenance_request| %>
-  <tr>
-    <td><%= maintenance_request.user.name if maintenance_request.user %></td>
-    <td><%= maintenance_request.user.rental.name if maintenance_request.user && maintenance_request.user.rental %></td>
-    <td><%= maintenance_request.request %></td>
-    <td><%= maintenance_request.created_at.month %>.<%= maintenance_request.created_at.day %>.<%= maintenance_request.created_at.year %></td>
-    <td><%= maintenance_request.updated_at.month %>.<%= maintenance_request.updated_at.day %>.<%= maintenance_request.updated_at.year %></td>
-  </tr>
-<% end %>
+    <% @completed.each do |maintenance_request| %>
+      <tr>
+        <td><%= maintenance_request.user.name if maintenance_request.user %></td>
+        <td><%= maintenance_request.user.rental.name if maintenance_request.user && maintenance_request.user.rental %></td>
+        <td><%= maintenance_request.request %></td>
+        <td><%= maintenance_request.created_at.month %>.<%= maintenance_request.created_at.day %>.<%= maintenance_request.created_at.year %></td>
+        <td><%= maintenance_request.updated_at.month %>.<%= maintenance_request.updated_at.day %>.<%= maintenance_request.updated_at.year %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
