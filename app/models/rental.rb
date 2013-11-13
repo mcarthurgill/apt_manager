@@ -1,5 +1,5 @@
 class Rental < ActiveRecord::Base
-  attr_accessible :name, :rent, :user_id, :images_attributes
+  attr_accessible :name, :rent, :user_id, :images_attributes, :available
 
   belongs_to :user
   has_many :pdfs

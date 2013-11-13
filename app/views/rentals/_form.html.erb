@@ -5,6 +5,8 @@
     <%= f.text_field :name, :class => "span4" %>
     <%= f.label :rent, "Rent:" %>
     <%= f.text_field :rent, :class => "span4" %>
+    <%= f.label :available, "Currently Available?" %>
+    <%= f.check_box :available, :class => "span4" %>
     <hr/>
     <ul class="thumbnails">
       <%= f.fields_for :images, @rental.images do |images_field| %>

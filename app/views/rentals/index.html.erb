@@ -8,6 +8,7 @@
     <th class="sortable headerSortDown">Name</th>
     <th class="sortable headerSortDown">Rent</th>
     <th class="sortable headerSortDown">Tenant</th>
+    <th class="sortable headerSortDown">Rented</th>
     <th></th>
     <th></th>
     <th></th>
@@ -19,6 +20,7 @@
         <td><%= rental.name %></td>
         <td><%= number_to_currency(rental.rent) %></td>
         <td><%= rental.user.name if rental.user %></td>
+        <td><%= rental.available ? "Currently Available" : "Not Available" %></td>
         <td><%= link_to 'Show Property', rental, :class => "btn btn-info btn-small" %></td>
         <%= render 'shared/rental_links', :rental => rental if current_user && current_user.admin %>
       </tr>
