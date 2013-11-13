@@ -66,9 +66,14 @@ class RentalsController < ApplicationController
   # PUT /rentals/1.json
   def update
     @rental = Rental.find(params[:id])
+    p "*"*50
+    p params[:rental]
+    p @rental.available
+    p "*"*50
 
     respond_to do |format|
       if @rental.update_attributes(params[:rental])
+        p @rental.available
         format.html { redirect_to rental_path(@rental), notice: 'Rental was successfully updated.' }
         format.json { head :no_content }
       else
