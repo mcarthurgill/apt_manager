@@ -7,7 +7,7 @@
 </div>
 
 <% if @user %>
-	<%= link_to "Back", user_path(@user), :class => "btn btn-primary", :style => "color:white;" %>
+	<%= link_to "Back", user_path(@user), :class => "btn btn-default" %>
 <% else %>
-	<%= link_to "Back", root_path, :class => "btn btn-primary", :style => "color:white;" %>
+	<%= link_to "Back", root_path, :class => "btn btn-default" %>
 <% end %>
