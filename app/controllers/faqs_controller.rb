@@ -1,11 +1,12 @@
 class FaqsController < ApplicationController
   skip_before_filter :authorize_as_admin, :only => :index
-  before_filter :authorize, :only => :index
 
   # GET /faqs
   # GET /faqs.json
   def index
     @faqs = Faq.all
+    @user = User.find(session[:user_id]) if current_user
+    @home = true
 
     respond_to do |format|
       format.html # index.html.erb

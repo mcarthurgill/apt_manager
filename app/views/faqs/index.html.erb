@@ -1,7 +1,13 @@
-<h1>Listing faqs</h1>
+<h1>Frequently Asked Questions</h1>
 
 <div class="accordion" id="accordion2">
   <% @faqs.each do |faq| %>                     
     <%= render 'question', :faq => faq %>
   <% end %>
 </div>
+
+<% if @user %>
+	<%= link_to "Back", user_path(@user), :class => "btn btn-primary", :style => "color:white;" %>
+<% else %>
+	<%= link_to "Back", root_path, :class => "btn btn-primary", :style => "color:white;" %>
+<% end %>

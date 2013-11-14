@@ -1,20 +1,22 @@
-<%= form_for(@maintenance_request) do |f| %>
-  <% if @maintenance_request.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@maintenance_request.errors.count, "error") %> prohibited this maintenance_request from being saved:</h2>
 
-      <ul>
-      <% @maintenance_request.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+
+    <%= form_for(@maintenance_request) do |f| %>
+      <% if @maintenance_request.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@maintenance_request.errors.count, "error") %> prohibited this maintenance_request from being saved:</h2>
+
+          <ul>
+          <% @maintenance_request.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.text_area :request, :cols => "50", :rows => "10" %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Submit Request", :class => "btn btn-primary" %>
-  </div>
-<% end %>
+      <div class="actions">
+        <%= f.text_area :request, :cols => "50", :rows => "10" %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Submit Request", :class => "btn btn-primary" %>
+      </div>
+    <% end %>
