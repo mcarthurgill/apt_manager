@@ -1,0 +1,46 @@
+th.sortable{
+    font-weight: bold;
+    cursor:pointer;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+th.headerSortUp {
+    background-image: url("black-asc.gif");
+}
+th.headerSortDown {
+    background-image: url("black-desc.gif")
+}
+
+.btn{
+    width:10em;
+    opacity: 0.72;
+    line-height: 4em !important;
+    margin: 2%;
+}
+
+$bgs: front1, front2, front3, front4, front5, front6;
+$index: length($bgs);
+
+body{
+	background: url('/images/#{nth($bgs, $index)}.jpeg') no-repeat center center fixed; 
+	 -webkit-background-size: cover;
+	 -moz-background-size: cover;
+	 -o-background-size: cover;
+	 background-size: cover;
+}
+
+.box_container {
+    background-color:rgba(78,138, 134, 0.6);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    color: white;
+    padding: 2%;
+    text-align:center;
+    margin-top: 5%;
+}
+
+a {
+    color: black !important;
+}

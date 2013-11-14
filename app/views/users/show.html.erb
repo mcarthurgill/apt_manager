@@ -1,43 +1,60 @@
-<h1><%= @user.name %></h1>
+<div class="box_container span6 offset3">
 
-<table class="table table-striped">
-  <tr>
-    <th>Email</th>
-    <th>Phone</th>
-    <th>Property</th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-  <tr>
-    <td><%= @user.email %></td>
-    <td><%= @user.phone %></td>
-    <td><%= @user.rental.name if @user.rental %></td>
-    <% if @user && @user.admin %>
-      <%= render 'shared/user_links', :user => @user %>
-    <% end %>
-  </tr>
+  <h1><%= @user.name %></h1>
 
-</table>
-<br><br>
-<table class="table table-striped">
-  <tr>
-    <th>PDF Documents</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-  <% @pdfs.each do |pdf| %>
+  <!-- <table class="table table-striped">
     <tr>
-      <td><%= pdf.title %></td>
-      <td><%= link_to "Click for PDF", "#{pdf.file}", :target => "_blank", :class => "btn btn-primary btn-small" %></td>
-      <td><%= link_to 'Edit', edit_pdf_path(pdf), :class => "btn btn-success btn-small" %></td>
-      <td><%= link_to 'Destroy', pdf, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-small"  %></td>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Property</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
-  <% end %>
-</table>
+    <tr>
+      <td><%= @user.email %></td>
+      <td><%= @user.phone %></td>
+      <td><%= @user.rental.name if @user.rental %></td>
+      <% if @user && @user.admin %>
+        <%= render 'shared/user_links', :user => @user %>
+      <% end %>
+    </tr>
 
+  </table>
+  <br><br>
+  <table class="table table-striped">
+    <tr>
+      <th>PDF Documents</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+    <% @pdfs.each do |pdf| %>
+      <tr>
+        <td><%= pdf.title %></td>
+        <td><%= link_to "Click for PDF", "#{pdf.file}", :target => "_blank", :class => "btn btn-primary btn-small" %></td>
+        <td><%= link_to 'Edit', edit_pdf_path(pdf), :class => "btn btn-success btn-small" %></td>
+        <td><%= link_to 'Destroy', pdf, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-small"  %></td>
+      </tr>
+    <% end %>
+  </table> -->
 
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="span6">
+        <%= link_to "Pay Rent", "#", :class => "btn btn-default" %>
+        <%= link_to "Payment History", "#", :class => "btn btn-default" %>
+        <%= link_to "Maintenance", new_maintenance_request_path, :class => "btn btn-default" %>
+        <%= link_to "Lease", "#", :class => "btn btn-default" %>
+      </div>
+      <div class="span6">
+        <%= link_to "FAQ", faqs_path, :class => "btn btn-default" %>
+        <%= link_to "Community Docs", "#", :class => "btn btn-default" %>
+        <%= link_to "Moving Out", "#", :class => "btn btn-default" %>
+        <%= link_to "Moving In", "#", :class => "btn btn-default" %>
+      </div>
+    </div>
+  </div>
 
-<%= link_to 'Back', users_path, :class => "btn btn-info" %>
+</div>

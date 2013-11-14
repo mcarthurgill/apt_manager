@@ -24,14 +24,8 @@
 				<% end %>
 			<% end %>
 
-			<% if current_user %>
-				<% if current_user.admin %>
+			<% if current_user && current_user.admin %>
 					<%= render 'layouts/admin_nav' %>
-				<% else %>
-					<%= render 'layouts/tenant_nav' %>
-				<% end %>
-			<% else %>
-				<%= render 'layouts/login_nav' unless @home %>
 			<% end %>
 
 			<%= yield %>
