@@ -11,12 +11,14 @@ class ApplicationController < ActionController::Base
   	helper_method :current_user
 
   	def authorize
+      @home = true
   		redirect_to login_path, alert: "You must login first" unless current_user
   	end
 
     def authorize_as_admin
       if current_user
         if current_user.admin
+          @home = false
           return
         end
         redirect_to user_path(current_user), alert: "You do not have permission to go there"

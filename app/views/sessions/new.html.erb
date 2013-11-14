@@ -1,11 +1,26 @@
 <h1>Log In</h1>
 
 <%= form_tag sessions_path do %>
-	<div class="field">
-		<%= text_field_tag :email, params[:email], :placeholder => "Email" %>
+	<div class="row-fluid">
+		<div class="span8 offset2">
+			<div class="field span12">
+				<%= text_field_tag :email, params[:email], :placeholder => "Email" %>
+			</div>
+		</div>
 	</div>
-	<div class="field">
-		<%= password_field_tag :password, params[:password], :placeholder => "Password" %>
+	<div class="row-fluid">
+		<div class="span8 offset2">
+			<div class="field span12">
+				<%= password_field_tag :password, params[:password], :placeholder => "Password" %>
+			</div>
+		</div>
 	</div>
-	<div class="actions"><%= submit_tag "Log In", :class => "btn btn-primary" %>
+	<div class="row-fluid">
+		<div class="span12">
+			<%= submit_tag "Log In", :class => "btn btn-primary" %>
+		</div>
+	</div>
+	<%= link_to "Back", root_path %>	
+
 <% end %>
+

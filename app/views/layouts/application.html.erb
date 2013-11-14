@@ -3,12 +3,11 @@
 <head>
   <title>AptManager</title>
   <% if @home %>
-  	<%= stylesheet_link_tag params[:controller] %>
+  	<%= stylesheet_link_tag "maintenance_requests" %>
   	<%= stylesheet_link_tag "bootstrap_and_overrides" %>
   <% else %>
   	<%= stylesheet_link_tag "bootstrap_and_overrides" %>
   	<%= stylesheet_link_tag "scaffolds" %>
-  	<%= stylesheet_link_tag "maintenance_requests" %>
   <% end %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -25,10 +24,14 @@
 			<% end %>
 
 			<% if current_user && current_user.admin %>
-					<%= render 'layouts/admin_nav' %>
+				<%= render 'layouts/admin_nav' %>
+				<%= yield %>
+			<% else %>
+				<%= render 'layouts/tenant_nav' %>
+				<%= yield %>
+				<%= render 'layouts/tenant_end_nav' %>
 			<% end %>
 
-			<%= yield %>
 
 		</div>
 

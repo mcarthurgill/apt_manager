@@ -2,9 +2,11 @@ class SessionsController < ApplicationController
   skip_before_filter :authorize_as_admin
 
   def new
+    @home = true
   end
 
   def create
+    @home = true
   	user = User.find_by_email(params[:email])
   	if user && user.authenticate(params[:password])
   		session[:user_id] = user.id

@@ -20,8 +20,12 @@ class UsersController < ApplicationController
     @pdfs = @user.pdfs
     
     respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @user }
+      if @user.admin
+        format.html { redirect_to rentals_path }
+      else 
+        format.html # show.html.erb
+        format.json { render json: @user }
+      end
     end
   end
 
