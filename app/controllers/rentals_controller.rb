@@ -65,7 +65,6 @@ class RentalsController < ApplicationController
     
     respond_to do |format|
       if @rental.update_attributes(params[:rental])
-        p @rental.available
         format.html { redirect_to rental_path(@rental), notice: 'Rental was successfully updated.' }
         format.json { head :no_content }
       else

@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131113200717) do
+ActiveRecord::Schema.define(:version => 20131114183809) do
+
+  create_table "bg_images", :force => true do |t|
+    t.string   "file"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.integer  "dummy_id",   :default => 1
+  end
+
+  create_table "dummies", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "faqs", :force => true do |t|
     t.string   "question"

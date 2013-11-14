@@ -1,0 +1,23 @@
+<h1>Listing bg_images</h1>
+
+<table>
+  <tr>
+    <th>File</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @bg_images.each do |bg_image| %>
+  <tr>
+    <td><%= bg_image.file %></td>
+    <td><%= link_to 'Show', bg_image %></td>
+    <td><%= link_to 'Edit', edit_bg_image_path(bg_image) %></td>
+    <td><%= link_to 'Destroy', bg_image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Bg image', new_bg_image_path %>

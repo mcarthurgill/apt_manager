@@ -1,5 +1,11 @@
 AptManager::Application.routes.draw do
 
+  resources :dummies
+
+
+  resources :bg_images
+
+
   resources :faqs
 
 

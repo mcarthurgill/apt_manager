@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
 
   	def authorize
       @home = true
+      @bgs = BgImage.all.sample
   		redirect_to login_path, alert: "You must login first" unless current_user
   	end
 

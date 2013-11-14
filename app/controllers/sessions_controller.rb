@@ -3,10 +3,12 @@ class SessionsController < ApplicationController
 
   def new
     @home = true
+    @bgs = BgImage.all.sample
   end
 
   def create
     @home = true
+    @bgs = BgImage.all.sample
   	user = User.find_by_email(params[:email])
   	if user && user.authenticate(params[:password])
   		session[:user_id] = user.id

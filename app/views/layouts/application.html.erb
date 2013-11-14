@@ -3,10 +3,9 @@
 <head>
   <title>AptManager</title>
   <% if @home %>
-  	<% bgs = ['front1', 'front2', 'front3', 'front4', 'front5', 'front6'] %>
   	<style type="text/css">
   	body{
-  		background: url('/images/<%= bgs.sample %>.jpeg') no-repeat center center fixed; 
+  		background: url("<%= @bgs.file.url %>") no-repeat center center fixed; 
   		 -webkit-background-size: cover;
   		 -moz-background-size: cover;
   		 -o-background-size: cover;

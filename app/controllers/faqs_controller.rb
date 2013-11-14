@@ -7,6 +7,7 @@ class FaqsController < ApplicationController
     @faqs = Faq.all
     @user = User.find(session[:user_id]) if current_user
     @home = true
+    @bgs = BgImage.all.sample
 
     respond_to do |format|
       format.html # index.html.erb

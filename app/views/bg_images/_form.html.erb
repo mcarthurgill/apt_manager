@@ -1,0 +1,44 @@
+<%= form_for(@bg_image) do |f| %>
+  <% if @bg_image.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bg_image.errors.count, "error") %> prohibited this bg_image from being saved:</h2>
+
+      <ul>
+      <% @bg_image.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="row">
+      <div class="span10">
+        <ul class="thumbnails">
+          <% if f.object.new_record? %>
+            <li id="<%= f.object_name.gsub(/[^0-9]+/,'') %>" class="span4">
+              <%= f.label :file, "Background Image:" %>
+              <%= f.file_field :file %>
+            </li>
+          <% else %>
+            <% f.fields_for :bg_images, @bgs do |images_field|%>
+              <li id="<%= bg.object_name.gsub(/[^0-9]+/,'') %>" class="span2">
+                <div class="thumbnail">
+                  <%= image_tag(bg.file.url(:thumb)) %>
+                  <div class="caption">
+                    <%= bg.check_box :_destroy %>
+                    <%= bg.label(:_destroy, "Delete background image", :class => "checkbox inline") %>
+                  </div>
+                </div>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+      <span class="help-block">Add one image at a time. When the page reloads, you will see all of the background images.</span>
+      <div class="form-actions">
+        <%= f.submit "Save", :class => "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+

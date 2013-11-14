@@ -3,6 +3,7 @@ class HomeController < ApplicationController
 
   def index
   	@home = true
+  	@bgs = BgImage.all.sample
   end
   
 end
