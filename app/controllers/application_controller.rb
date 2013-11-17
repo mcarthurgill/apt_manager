@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
           @home = false
           return
         end
-        redirect_to user_path(current_user), alert: "You do not have permission to go there"
+        redirect_to user_path(current_user), alert: "Sorry you do not have permission to go there"
       else
         redirect_to login_path, alert: "You must log in"
       end
