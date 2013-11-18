@@ -100,6 +100,7 @@ class UsersController < ApplicationController
   end
 
   def payments
-    
+    @user = User.find(params[:id])
+    @payments = Payment.where("user_id = ?", @user.id)
   end
 end

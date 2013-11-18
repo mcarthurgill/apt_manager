@@ -1,1 +1,22 @@
-<table class="table"></table>
+<table class="table table-hover table-condensed tablesorter-blue">
+	<thead>
+	  <th class="sortable headerSortDown">Amount</th>
+	  <th class="sortable headerSortDown">Payment Type</th>
+	  <th></th>
+	  <th></th>
+	  <th></th>
+	</thead>
+
+	<tbody>
+	  <% @payments.each do |payment| %>
+	  	<tr>
+	  		<td>
+	  			<%= payment.amount %>
+	  		</td>
+	  		<td>
+	  			<%= payment.type %>
+	  		</td>
+	  	</tr>
+	  <% end %>
+	</tbody>
+</table>
