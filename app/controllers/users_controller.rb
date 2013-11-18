@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  skip_before_filter :authorize_as_admin, :only => :show
-  before_filter :authorize, :only => :show
+  skip_before_filter :authorize_as_admin, :only => [:show, :payments]
+  before_filter :authorize, :only => [:show, :payments]
 
   # GET /users
   # GET /users.json
@@ -97,5 +97,9 @@ class UsersController < ApplicationController
     user.save! 
     rental.save!
     redirect_to matches_path, :notice => "Match was deleted"
+  end
+
+  def payments
+    
   end
 end
