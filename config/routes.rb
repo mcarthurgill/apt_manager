@@ -1,5 +1,8 @@
 AptManager::Application.routes.draw do
 
+  resources :links
+
+
   resources :payments
 
 
