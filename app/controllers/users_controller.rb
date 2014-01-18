@@ -109,7 +109,7 @@ class UsersController < ApplicationController
     @hash = Gmaps4rails.build_markers(@banks) do |bank, marker|
       marker.lat bank.latitude
       marker.lng bank.longitude
-      marker.title bank.name
+      marker.infowindow render_to_string(:partial => "shared/hover", :locals => { :bank => bank })
     end
     p @hash
     p "*"*50
