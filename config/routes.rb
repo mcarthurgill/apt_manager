@@ -26,6 +26,7 @@ AptManager::Application.routes.draw do
 
   resources :users
   get "users/:id/payments", to: "users#payments", as: 'user_payments'
+  get "users/:id/pay_rent", to: "users#pay_rent", as: 'pay_rent'
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'

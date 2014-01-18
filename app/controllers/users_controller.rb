@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  skip_before_filter :authorize_as_admin, :only => [:show, :payments]
-  before_filter :authorize, :only => [:show, :payments]
+  skip_before_filter :authorize_as_admin, :only => [:show, :payments, :pay_rent]
+  before_filter :authorize, :only => [:show, :payments, :pay_rent]
 
   # GET /users
   # GET /users.json
@@ -102,5 +102,9 @@ class UsersController < ApplicationController
   def payments
     @user = User.find(params[:id])
     @payments = Payment.where("user_id = ?", @user.id)
+  end
+
+  def pay_rent
+    @api_key = "AIzaSyBsx0BBeyCSgIydG3wqmhOfaF0VSs_9du4"
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131118142603) do
+ActiveRecord::Schema.define(:version => 20131124173213) do
 
   create_table "bg_images", :force => true do |t|
     t.string   "file"
@@ -35,6 +35,14 @@ ActiveRecord::Schema.define(:version => 20131118142603) do
   create_table "images", :force => true do |t|
     t.integer  "rental_id"
     t.string   "file"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "links", :force => true do |t|
+    t.string   "title"
+    t.string   "url"
+    t.integer  "image_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
