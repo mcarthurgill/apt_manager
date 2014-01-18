@@ -105,6 +105,13 @@ class UsersController < ApplicationController
   end
 
   def pay_rent
-    @api_key = "AIzaSyBsx0BBeyCSgIydG3wqmhOfaF0VSs_9du4"
+    @banks = Bank.all
+    @hash = Gmaps4rails.build_markers(@banks) do |bank, marker|
+      marker.lat bank.latitude
+      marker.lng bank.longitude
+      marker.title bank.name
+    end
+    p @hash
+    p "*"*50
   end
 end
