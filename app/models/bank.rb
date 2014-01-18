@@ -1,5 +1,7 @@
 class Bank < ActiveRecord::Base
-  attr_accessible :name, :longitude, :latitude, :gmaps
+  attr_accessible :name, :longitude, :latitude, :gmaps, :address, :phone
 
-  acts_as_gmappable, :process_geocoding => false
+  geocoded_by :address
+
+  after_validation :geocode
 end
