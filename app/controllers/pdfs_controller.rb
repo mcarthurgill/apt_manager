@@ -49,7 +49,7 @@ class PdfsController < ApplicationController
     respond_to do |format|
       if @pdf.save
         if @pdf.user
-          format.html { redirect_to user_path(@pdf.user), notice: 'Pdf was successfully created.' }
+          format.html { redirect_to pdfs_path, notice: 'Pdf was successfully created.' }
         elsif @pdf.rental
           format.html { redirect_to rental_path(@pdf.rental), notice: 'Pdf was successfully created.' }
         end
